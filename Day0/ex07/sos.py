@@ -50,10 +50,7 @@ def main() -> None:
             if not char.isdigit() and not char.isalpha() and char != ' ':
                 raise AssertionError("the arguments are bad")
         text = argv[1].upper()
-        for i, char in enumerate(text):
-            end = "" if i == len(text) - 1 else " "
-            print(NESTED_MORSE[char], end=end)
-        print()
+        print(" ".join(NESTED_MORSE[c] for c in text))
     except Exception as e:
         print("AssertionError:", e)
         return (1)
