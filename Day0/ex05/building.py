@@ -2,15 +2,6 @@ import sys
 import string
 
 
-def assertError(comparison: bool, message: str) -> None:
-    """ Asserts a comparison and prints an error message if it fails. """
-    try:
-        assert comparison, message
-    except AssertionError as e:
-        print("AssertionError:", e)
-        exit(1)
-
-
 def count_characters(text: str) -> dict:
     """ Counts various types of characters in the given text. """
     counts = {
@@ -36,19 +27,24 @@ def print_counts(counts: dict) -> None:
 
 def main() -> int:
     """ Main function to count characters in the given text. """
-    argv = sys.argv
-    text = ""
-    assertError(len(argv) <= 2, "more than one argument is provided")
-    if len(argv) == 1 or argv[1] == "":
-        try:
-            print("What is the text to count?")
-            text = sys.stdin.readline()
-        except KeyboardInterrupt:
-            pass
-    else:
-        text = argv[1]
-    counts = count_characters(text)
-    print_counts(counts)
+    try:
+        argv = sys.argv
+        text = ""
+        if len(argv) > 2:
+            raise AssertionError("more than one argument is provided")
+        if len(argv) == 1 or argv[1] == "":
+            try:
+                print("What is the text to count?")
+                text = sys.stdin.readline()
+            except KeyboardInterrupt:
+                pass
+        else:
+            text = argv[1]
+        counts = count_characters(text)
+        print_counts(counts)
+    except Exception as e:
+        print("AssertionError:", e)
+        return 1
     return 0
 
 
