@@ -3,6 +3,7 @@ import string
 
 
 def assertError(comparison: bool, message: str) -> None:
+    """ Asserts a comparison and prints an error message if it fails. """
     try:
         assert comparison, message
     except AssertionError as e:
@@ -11,6 +12,7 @@ def assertError(comparison: bool, message: str) -> None:
 
 
 def count_characters(text: str) -> dict:
+    """ Counts various types of characters in the given text. """
     counts = {
         "upper": sum(c.isupper() for c in text),
         "lower": sum(c.islower() for c in text),
@@ -23,6 +25,7 @@ def count_characters(text: str) -> dict:
 
 
 def print_counts(counts: dict) -> None:
+    """ Prints the character counts in a formatted manner. """
     print(f"The text contains {counts['total']} characters:")
     print(counts['upper'], "upper letters")
     print(counts['lower'], "lower letters")
@@ -32,6 +35,7 @@ def print_counts(counts: dict) -> None:
 
 
 def main() -> int:
+    """ Main function to count characters in the given text. """
     argv = sys.argv
     text = ""
     assertError(len(argv) <= 2, "more than one argument is provided")
