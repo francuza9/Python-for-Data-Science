@@ -2,6 +2,21 @@ import numpy as np
 
 
 def slice_me(family: list, start: int, end: int) -> list:
+    """
+    Slice a 2D list (list of lists) from start index to end index.
+
+    Args:
+        family (list): A 2D list where each inner list
+            represents a family member's attributes.
+        start (int): The starting index for slicing (inclusive).
+        end (int): The ending index for slicing (exclusive).
+    Returns:
+        list: A sliced 2D list from start to end indices.
+    Raises:
+        ValueError: If the family list is empty or
+             if inner lists are of varying lengths.
+        TypeError: If the inputs are not of the expected types.
+    """
     if not isinstance(family, list):
         raise TypeError("Family must be a list.")
     if not all(isinstance(member, list) for member in family):
