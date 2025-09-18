@@ -32,8 +32,7 @@ def give_bmi(
         raise ValueError("All weight values must be positive numbers.")
     height_array = np.array(height)
     weight_array = np.array(weight)
-    height_in_meters = height_array / 100
-    bmi = weight_array / (height_in_meters ** 2)
+    bmi = weight_array / (height_array ** 2)
     return bmi.tolist()
 
 
