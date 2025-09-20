@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 from load_image import ft_load
 
 
-def zoom_img(img: np.ndarray, y1: int, y2: int, x1: int, x2: int) -> np.ndarray:
+def zoom_img(
+    img: np.ndarray,
+    y1: int, y2: int,
+    x1: int, x2: int
+) -> np.ndarray:
     """
     Zoom into a specific region of the image and convert to grayscale.
 
@@ -16,7 +20,8 @@ def zoom_img(img: np.ndarray, y1: int, y2: int, x1: int, x2: int) -> np.ndarray:
     Returns:
         np.ndarray: The zoomed-in grayscale region of the image.
     Raises:
-        TypeError: If the input image is not a numpy array or coordinates are not integers.
+        TypeError: If the input image is not a
+            numpy array or coordinates are not integers.
         ValueError: If the input image is not 3-dimensional.
     """
     if not isinstance(img, np.ndarray):
@@ -27,11 +32,10 @@ def zoom_img(img: np.ndarray, y1: int, y2: int, x1: int, x2: int) -> np.ndarray:
         raise TypeError("Coordinates must be integers.")
     cropped = img[y1:y2, x1:x2]
     # Convert to grayscale using RGB weights
-    grayscale = np.dot(cropped[...,:3], [0.2989, 0.5870, 0.1140])
+    grayscale = np.dot(cropped[..., :3], [0.2989, 0.5870, 0.1140])
     grayscale = grayscale.astype(np.uint8)
     # Add back the channel dimension to make it (height, width, 1)
     grayscale = grayscale[:, :, np.newaxis]
-    
     return grayscale
 
 
@@ -54,7 +58,7 @@ def display_img(img: np.ndarray) -> None:
     else:
         plt.imshow(img)
     plt.xlabel("Width")
-    plt.ylabel("Height") 
+    plt.ylabel("Height")
     plt.show()
 
 
@@ -68,7 +72,8 @@ def main():
         zoomed_img = zoom_img(img, 100, 500, 100, 500)
         # Create squeezed version for shape comparison
         squeezed_img = np.squeeze(zoomed_img)
-        print(f"New shape after slicing: {zoomed_img.shape} or {squeezed_img.shape}")
+        print(f"New shape after slicing: {zoomed_img.shape}", end="")
+        print(f" or {squeezed_img.shape}")
         print(zoomed_img)
         display_img(zoomed_img)
     except TypeError as te:
