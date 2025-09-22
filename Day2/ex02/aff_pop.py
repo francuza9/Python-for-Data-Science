@@ -4,6 +4,16 @@ from load_csv import load
 
 
 def display_population_comparison(dataset: pd.DataFrame, my_country_name: str, other_country_name: str) -> None:
+    """
+    Display the population projections for two given countries.
+
+    Parameters:
+        dataset (pd.DataFrame): The dataset containing population data.
+        my_country_name (str): The name of the first country to display data for.
+        other_country_name (str): The name of the second country to display data for.
+    Raises:
+        ValueError: If the dataset is invalid or either country is not found.
+    """
     if (dataset is None or not isinstance(dataset, pd.DataFrame)
             or dataset.empty):
         raise ValueError("Invalid dataset")
@@ -60,6 +70,11 @@ def display_population_comparison(dataset: pd.DataFrame, my_country_name: str, o
 
 
 def main() -> None:
+    """
+    Main function to load dataset and display population comparison for two countries.
+
+    Handles exceptions and prints error messages.
+    """
     my_country_name = "France"
     other_country_name = "Belgium"
     try:
