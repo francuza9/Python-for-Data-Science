@@ -40,6 +40,7 @@ def parse_population_value(value) -> float:
     except ValueError:
         raise ValueError(f"Cannot parse population value: {value}")
 
+
 def display_population_comparison(
     dataset: pd.DataFrame,
     my_country_name: str,
@@ -92,11 +93,13 @@ def display_population_comparison(
         try:
             my_population = parse_population_value(my_population_raw)
         except ValueError as e:
-            raise ValueError(f"Invalid population data for {my_country_name} in year {year}: {e}")
+            raise ValueError(f"Invalid population data for"
+                             f" {my_country_name} in year {year}: {e}")
         try:
             other_population = parse_population_value(other_population_raw)
         except ValueError as e:
-            raise ValueError(f"Invalid population data for {other_country_name} in year {year}: {e}")
+            raise ValueError(f"Invalid population data for"
+                             f" {other_country_name} in year {year}: {e}")
         my_country_population.append(my_population)
         other_country_population.append(other_population)
 
