@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def load(path: str) -> pd.DataFrame | None:
     """
     Load a CSV file into a pandas DataFrame.
@@ -11,7 +12,7 @@ def load(path: str) -> pd.DataFrame | None:
     """
     try:
         if (path is None or not isinstance(path, str)
-            or path == "" or not path.endswith(".csv")):
+                or path == "" or not path.endswith(".csv")):
             raise ValueError("Invalid file path")
         dataset = pd.read_csv(path)
         if dataset.empty:
@@ -36,4 +37,3 @@ def load(path: str) -> pd.DataFrame | None:
     except Exception as e:
         print(f"Error loading CSV: {e}")
         return None
-
