@@ -4,6 +4,16 @@ from load_csv import load
 
 
 def parse_population_value(value) -> float:
+    """
+    Parse a population value that may include suffixes like K, M, B, T.
+
+    Parameters:
+        value: The population value to parse.
+    Returns:
+        float: The parsed population as a float.
+    Raises:
+        ValueError: If the value cannot be parsed.
+    """
     if pd.isna(value):
         raise ValueError("Population value is NaN")
     str_value = str(value).strip()
