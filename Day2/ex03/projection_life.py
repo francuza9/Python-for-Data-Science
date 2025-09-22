@@ -4,6 +4,12 @@ from load_csv import load
 
 
 def display_life_vs_income_projection() -> None:
+    """
+    Display a scatter plot of life expectancy vs income per person for the year 1900.
+
+    Raises:
+        ValueError: If datasets are invalid or required data is missing.
+    """
     life_expectancy_dataset = load("life_expectancy_years.csv")
     income_dataset = load("income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
 
