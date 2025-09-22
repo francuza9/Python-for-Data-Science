@@ -14,7 +14,7 @@ def parse_population_value(value) -> float:
     Raises:
         ValueError: If the value cannot be parsed.
     """
-    if pd.isna(value):
+    if value != value:
         raise ValueError("Population value is NaN")
     str_value = str(value).strip()
     try:
