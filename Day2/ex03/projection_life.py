@@ -5,28 +5,31 @@ from load_csv import load
 
 def display_life_vs_income_projection() -> None:
     """
-    Display a scatter plot of life expectancy vs income per person for the year 1900.
+    Display a scatter plot of life expectancy
+    vs income per person for the year 1900.
 
     Raises:
         ValueError: If datasets are invalid or required data is missing.
     """
     life_expectancy_dataset = load("life_expectancy_years.csv")
-    income_dataset = load("income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
+    income_dataset = load(
+        "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
+    )
 
     if (life_expectancy_dataset is None
-        or not isinstance(life_expectancy_dataset, pd.DataFrame)
-        or life_expectancy_dataset.empty):
+       or not isinstance(life_expectancy_dataset, pd.DataFrame)
+       or life_expectancy_dataset.empty):
         raise ValueError("Invalid life expectancy dataset")
     if (income_dataset is None
-        or not isinstance(income_dataset, pd.DataFrame)
-        or income_dataset.empty):
+       or not isinstance(income_dataset, pd.DataFrame)
+       or income_dataset.empty):
         raise ValueError("Invalid income dataset")
-    
+
     if "1900" not in life_expectancy_dataset.columns:
         raise ValueError("Year 1900 not found in life expectancy dataset")
     if "1900" not in income_dataset.columns:
         raise ValueError("Year 1900 not found in income dataset")
-    
+
     life_1900 = life_expectancy_dataset[["country", "1900"]].copy()
     income_1900 = income_dataset[["country", "1900"]].copy()
 
