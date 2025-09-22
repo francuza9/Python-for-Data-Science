@@ -1,6 +1,14 @@
 import pandas as pd
 
 def load(path: str) -> pd.DataFrame | None:
+    """
+    Load a CSV file into a pandas DataFrame.
+
+    Parameters:
+        path (str): The file path to the CSV file.
+    Returns:
+        pd.DataFrame | None: The loaded DataFrame, or None if loading failed.
+    """
     try:
         if (path is None or not isinstance(path, str)
             or path == "" or not path.endswith(".csv")):
