@@ -3,7 +3,7 @@ import pandas as pd
 from load_csv import load
 
 
-def display_aff_life(dataset: pd.DataFrame, country_name: str) -> None:
+def aff_life(dataset: pd.DataFrame, country_name: str) -> None:
     """
     Display the life expectancy projections for a given country.
 
@@ -22,8 +22,6 @@ def display_aff_life(dataset: pd.DataFrame, country_name: str) -> None:
     if country_name not in dataset["country"].values:
         raise ValueError(f"Country '{country_name}' not found in dataset")
     country_data = dataset[dataset["country"] == country_name]
-    if country_data.empty:
-        raise ValueError(f"No data available for country '{country_name}'")
     # Extract years from the dataset columns
     years = [col for col in dataset.columns
              if col != "country" and col.isdigit()]
@@ -55,7 +53,7 @@ def main() -> None:
     try:
         dataset = load("life_expectancy_years.csv")
         country_name = "France"
-        display_aff_life(dataset, country_name)
+        aff_life(dataset, country_name)
     except ValueError as ve:
         print(f"Value Error: {ve}")
     except Exception as e:
