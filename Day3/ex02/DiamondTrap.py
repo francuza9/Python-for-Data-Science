@@ -73,7 +73,7 @@ class King(Baratheon, Lannister):
             str: The eye color of the King character.
         """
         return self._eyes
-    
+
     @property
     def hairs(self) -> str:
         """ Get the hair color of the King character
@@ -95,7 +95,7 @@ class King(Baratheon, Lannister):
         if not isinstance(color, str):
             raise TypeError("color must be a string")
         self._eyes = color
-    
+
     @hairs.setter
     def hairs(self, color: str) -> None:
         """ Set the hair color of the King character
