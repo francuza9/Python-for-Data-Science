@@ -95,16 +95,22 @@ def quartile(data: list[float | int], data_length: int) -> tuple[float, float]:
 
     q1_lower = int(q1_pos)
     q1_upper = q1_lower + 1 if q1_lower + 1 < data_length else q1_lower
-    q1 =  data[q1_lower] + (q1_pos - q1_lower) * (data[q1_upper] - data[q1_lower])
+    q1 = (q1_pos - q1_lower) * (data[q1_upper] - data[q1_lower])
+    q1 = data[q1_lower] + q1
 
     q3_lower = int(q3_pos)
     q3_upper = q3_lower + 1 if q3_lower + 1 < data_length else q3_lower
-    q3 =  data[q3_lower] + (q3_pos - q3_lower) * (data[q3_upper] - data[q3_lower])
+    q3 = (q3_pos - q3_lower) * (data[q3_upper] - data[q3_lower])
+    q3 = data[q3_lower] + q3
     print(f"quartile : [{q1}, {q3}]")
     return (q1, q3)
 
 
-def standard_deviation(data: list[float | int], data_length: int, mean: float | int) -> float:
+def standard_deviation(
+    data: list[float | int],
+    data_length: int,
+    mean: float | int
+) -> float:
     """ Calculates the standard deviation of the data.
 
     Args:
@@ -133,9 +139,13 @@ def standard_deviation(data: list[float | int], data_length: int, mean: float | 
     return stddev
 
 
-def variance(data: list[float | int], data_length: int, mean: float | int) -> float:
+def variance(
+    data: list[float | int],
+    data_length: int,
+    mean: float | int
+) -> float:
     """ Calculates the variance of the data.
-    
+
     Args:
         data (list[float | int]): List of numerical data.
         data_length (int): Length of the data list.
@@ -167,12 +177,13 @@ def ft_statistics(*args: any, **kwargs: any) -> None:
 
     Args:
         *args: Variable length argument list of numerical data.
-        **kwargs: Keyword arguments specifying statistical operations to perform.
+        **kwargs: Keyword arguments specifying statistical
+            operations to perform.
     """
     if not args:
         print_errors(kwargs)
         return
-    
+
     validate_data = []
     for arg in args:
         if isinstance(arg, (int, float)):
@@ -180,7 +191,7 @@ def ft_statistics(*args: any, **kwargs: any) -> None:
         else:
             print_errors(kwargs)
             return
-    
+
     data = validate_data
     data_sorted = sorted(data)
     data_length = len(data)
@@ -197,7 +208,11 @@ def ft_statistics(*args: any, **kwargs: any) -> None:
         if operation in name_to_func:
             if operation in ('std', 'var'):
                 try:
-                    name_to_func[operation](data_sorted, data_length, mean(data_sorted, data_length, False))
+                    name_to_func[operation](
+                        data_sorted,
+                        data_length,
+                        mean(data_sorted, data_length, False)
+                    )
                 except TypeError as e:
                     print(f"Type ERROR: {e}")
                 except ValueError as e:
