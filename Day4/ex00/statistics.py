@@ -171,7 +171,7 @@ def variance(
     return variance
 
 
-def ft_statistics(*args: any, **kwargs: any) -> None:
+def ft_statistics(*args, **kwargs) -> None:
     """ Computes and prints statistical measures
     based on provided data and operations.
 
