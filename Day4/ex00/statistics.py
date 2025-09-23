@@ -1,10 +1,34 @@
 def print_errors(kwargs: dict | None) -> None:
+    """ Prints "ERROR" for each key in kwargs if kwargs is not None.
+
+    Args:
+        kwargs (dict | None): Dictionary of keyword arguments.
+    """
     if kwargs is not None:
         for key in kwargs:
             print("ERROR")
 
 
-def mean(data: list[float | int], data_length: int, print_flag: bool = True) -> float:
+def mean(
+    data: list[float | int],
+    data_length: int,
+    print_flag: bool = True
+) -> float:
+    """ Calculates the mean of the data.
+
+    Args:
+        data (list[float | int]): List of numerical data.
+        data_length (int): Length of the data list.
+        print_flag (bool, optional): If True,
+            prints the mean. Defaults to True.
+    Returns:
+        float: The mean of the data.
+    Raises:
+        TypeError: If data is not a list or contains
+            non-numeric elements, or if print_flag is not a boolean.
+        ValueError: If data_length is not a positive
+            integer or if data contains non-numeric elements.
+    """
     if not isinstance(data, list):
         raise TypeError("Data should be a list.")
     if not all(isinstance(x, (int, float)) for x in data):
@@ -20,6 +44,18 @@ def mean(data: list[float | int], data_length: int, print_flag: bool = True) -> 
 
 
 def median(data: list[float | int], data_length: int) -> float:
+    """ Calculates the median of the data.
+
+    Args:
+        data (list[float | int]): List of numerical data.
+        data_length (int): Length of the data list.
+    Returns:
+        float: The median of the data.
+    Raises:
+        TypeError: If data is not a list or contains non-numeric elements.
+        ValueError: If data_length is not a positive integer
+            or if data contains non-numeric elements.
+    """
     if not isinstance(data, list):
         raise TypeError("Data should be a list.")
     if not all(isinstance(x, (int, float)) for x in data):
@@ -36,6 +72,18 @@ def median(data: list[float | int], data_length: int) -> float:
 
 
 def quartile(data: list[float | int], data_length: int) -> tuple[float, float]:
+    """ Calculates the first and third quartiles of the data.
+
+    Args:
+        data (list[float | int]): List of numerical data.
+        data_length (int): Length of the data list.
+    Returns:
+        tuple[float, float]: The first and third quartiles of the data.
+    Raises:
+        TypeError: If data is not a list or contains non-numeric elements.
+        ValueError: If data_length is not a positive integer
+            or if data contains non-numeric elements.
+    """
     if not isinstance(data, list):
         raise TypeError("Data should be a list.")
     if not all(isinstance(x, (int, float)) for x in data):
@@ -57,6 +105,20 @@ def quartile(data: list[float | int], data_length: int) -> tuple[float, float]:
 
 
 def standard_deviation(data: list[float | int], data_length: int, mean: float | int) -> float:
+    """ Calculates the standard deviation of the data.
+
+    Args:
+        data (list[float | int]): List of numerical data.
+        data_length (int): Length of the data list.
+        mean (float | int): Mean of the data.
+    Returns:
+        float: The standard deviation of the data.
+    Raises:
+        TypeError: If data is not a list or contains non-numeric elements,
+            or if mean is not a number.
+        ValueError: If data_length is not a positive integer
+            or if data contains non-numeric elements.
+    """
     if not isinstance(data, list):
         raise TypeError("Data should be a list.")
     if not all(isinstance(x, (int, float)) for x in data):
@@ -72,6 +134,20 @@ def standard_deviation(data: list[float | int], data_length: int, mean: float | 
 
 
 def variance(data: list[float | int], data_length: int, mean: float | int) -> float:
+    """ Calculates the variance of the data.
+    
+    Args:
+        data (list[float | int]): List of numerical data.
+        data_length (int): Length of the data list.
+        mean (float | int): Mean of the data.
+    Returns:
+        float: The variance of the data.
+    Raises:
+        TypeError: If data is not a list or contains non-numeric elements,
+            or if mean is not a number.
+        ValueError: If data_length is not a positive integer
+            or if data contains non-numeric elements.
+    """
     if not isinstance(data, list):
         raise TypeError("Data should be a list.")
     if not all(isinstance(x, (int, float)) for x in data):
@@ -86,6 +162,13 @@ def variance(data: list[float | int], data_length: int, mean: float | int) -> fl
 
 
 def ft_statistics(*args: any, **kwargs: any) -> None:
+    """ Computes and prints statistical measures
+    based on provided data and operations.
+
+    Args:
+        *args: Variable length argument list of numerical data.
+        **kwargs: Keyword arguments specifying statistical operations to perform.
+    """
     if not args:
         print_errors(kwargs)
         return
