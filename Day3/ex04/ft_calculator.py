@@ -2,7 +2,7 @@ class calculator:
     """ A simple calculator class to perform
         basic operations on vectors.
     """
-    
+
     @staticmethod
     def dotproduct(V1: list[float], V2: list[float]) -> None:
         """ Calculate the dot product of two vectors and print the result.
@@ -18,7 +18,7 @@ class calculator:
         result = sum(x * y for x, y in zip(V1, V2))
         print(f"Dot product is: {result}")
 
-    @staticmethod 
+    @staticmethod
     def add_vec(V1: list[float], V2: list[float]) -> None:
         """ Calculate the sum of two vectors and print the result.
 
