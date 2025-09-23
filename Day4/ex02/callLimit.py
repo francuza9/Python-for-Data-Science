@@ -17,9 +17,11 @@ def callLimit(limit: int):
     if limit <= 0:
         raise ValueError("Limit should be a positive integer.")
     count = 0
+
     def callLimiter(function):
         if not callable(function):
             raise TypeError("Input should be a function.")
+
         def limit_function(*args, **kwds):
             nonlocal count
             if count < limit:
