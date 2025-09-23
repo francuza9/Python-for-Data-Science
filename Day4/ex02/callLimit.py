@@ -1,4 +1,21 @@
 def callLimit(limit: int):
+    """ Returns a decorator that limits the number of times
+    a function can be called.
+
+    Args:
+        limit (int): The maximum number of times the function can be called.
+    Returns:
+        function: A decorator that limits the number of times
+            a function can be called.
+    Raises:
+        TypeError: If limit is not an integer or if the decorated
+            object is not a function.
+        ValueError: If limit is not a positive integer.
+    """
+    if not isinstance(limit, int):
+        raise TypeError("Limit should be an integer.")
+    if limit <= 0:
+        raise ValueError("Limit should be a positive integer.")
     count = 0
     def callLimiter(function):
         if not callable(function):
