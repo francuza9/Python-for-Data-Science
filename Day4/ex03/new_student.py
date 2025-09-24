@@ -3,10 +3,20 @@ import string
 from dataclasses import dataclass, field
 
 def generate_id() -> str:
+	""" Generates a random alphanumeric ID of length 15. """
 	return ''.join(random.choices(string.ascii_letters + string.digits, k=15))
 
 @dataclass
 class Student:
+	""" Represents a student with personal and academic details.
+
+	Attributes:
+		name (str): The first name of the student.
+		surname (str): The last name of the student.
+		active (bool): Indicates if the student is currently active. Default is True.
+		login (str): The login identifier for the student, generated from name and surname.
+		id (str): A unique identifier for the student, generated automatically.
+	"""
 	name: str
 	surname: str
 	active: bool = True
