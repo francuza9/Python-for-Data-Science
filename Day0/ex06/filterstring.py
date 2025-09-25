@@ -35,10 +35,10 @@ def main():
             return (1)
         words = ft_filter(lambda x: len(x) > N, S.split(' '))
         print(words)
-
-    except Exception as e:
+    except AssertionError as e:
         print("AssertionError:", e)
-        return (1)
+    except Exception as e:
+        print("Error:", e)
     return (0)
 
 

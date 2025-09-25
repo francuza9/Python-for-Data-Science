@@ -10,19 +10,27 @@ def ft_load(path: str) -> np.ndarray:
         path (str): The file path to the image.
     Returns:
         np.ndarray: The image in RGB format as a NumPy array.
-    Raises:
-        FileNotFoundError: If the image file
-            does not exist at the specified path.
-        ValueError: If the image is empty or cannot be loaded.
-        TypeError: If the path is not a string.
     """
-    if not isinstance(path, str):
-        raise TypeError("The path must be a string.")
-    img = cv2.imread(path)
-    if img is None:
-        raise FileNotFoundError(f"Image not found at path: {path}")
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    if img_rgb.size == 0:
-        raise ValueError("The image is empty.")
-    print("The shape of image is:", img_rgb.shape)
-    return img_rgb
+    try:
+        if not isinstance(path, str):
+            raise TypeError("The path must be a string.")
+        img = cv2.imread(path)
+        if img is None:
+            raise FileNotFoundError(f"Image not found at path: {path}")
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if img_rgb.size == 0:
+            raise ValueError("The image is empty.")
+        print("The shape of image is:", img_rgb.shape)
+        return img_rgb
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        return np.array([])
+    except TypeError as e:
+        print(f"Error: {e}")
+        return np.array([])
+    except ValueError as e:
+        print(f"Error: {e}")
+        return np.array([])
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return np.array([])

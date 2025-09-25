@@ -91,4 +91,8 @@ class Lannister(Character):
         Returns:
             Lannister: A new instance of Lannister.
         """
-        return cls(first_name, is_alive)
+        try:
+            return cls(first_name, is_alive)
+        except TypeError as e:
+            print(f"Error creating Lannister: {e}")
+            return None

@@ -1,0 +1,10 @@
+build==1.3.0
+flake8==7.3.0
+ft_package @ file:///home/francuza9/42/Projects/Python-for-Data-Science/Day0/ex09/dist/ft_package-0.0.1-py3-none-any.whl#sha256=3f88a65786c7b8c12338c3533204ce5d67b7dc4d4f3da8ae47f9863c70e096a8
+mccabe==0.7.0
+numpy==2.3.3
+packaging==25.0
+pycodestyle==2.14.0
+pyflakes==3.4.0
+pyproject_hooks==1.2.0
+tqdm==4.67.1

@@ -18,5 +18,9 @@ def ft_tqdm(lst: range) -> None:
             yield item
     except OSError as e:
         print("Terminal size error:", e)
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user.")
+    except ValueError as e:
+        print("Value error:", e)
     except Exception as e:
         print("Error:", e)

@@ -39,20 +39,25 @@ def outer(x: int | float, function) -> object:
     Raises:
         TypeError: If x is not a number or if function is not a function.
     """
-    if not isinstance(x, (int, float)):
-        raise TypeError("Input should be a number.")
-    if not callable(function):
-        raise TypeError("Input should be a function.")
-    count = 0
+    try:
+        if not isinstance(x, (int, float)):
+            raise TypeError("Input should be a number.")
+        if not callable(function):
+            raise TypeError("Input should be a function.")
+        count = 0
 
-    def inner() -> float:
-        """ Applies the given function to x and increments the counter.
-        [CLOSURE]
-        Returns:
-            float: The result of applying the function to x.
-        """
-        nonlocal count, x
-        x = function(x)
-        count += 1
-        return x
+        def inner() -> float:
+            """ Applies the given function to x and increments the counter.
+            [CLOSURE]
+            Returns:
+                float: The result of applying the function to x.
+            """
+            nonlocal count, x
+            x = function(x)
+            count += 1
+            return x
+    except TypeError as e:
+        print(f"TypeError: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
     return inner

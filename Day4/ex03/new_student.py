@@ -35,10 +35,16 @@ class Student:
             ValueError: If name or surname is empty.
             TypeError: If name or surname is not a string.
         """
-        if not self.name or not self.surname:
-            raise ValueError("Name and surname cannot be empty.")
-        if not isinstance(self.name, str) or not isinstance(self.surname, str):
-            raise TypeError("Name and surname must be strings.")
-        if len(self.name) < 1:
-            raise ValueError("Name must be at least 1 character long.")
-        self.login = (self.name[0] + self.surname)
+        try:
+            if (not isinstance(self.name, str)
+               or not isinstance(self.surname, str)):
+                raise TypeError("Name and surname must be strings.")
+            if not self.name or not self.surname:
+                raise ValueError("Name and surname cannot be empty.")
+            self.login = (self.name[0] + self.surname)
+        except (ValueError, TypeError) as e:
+            self.login = "INVALID"
+            print(f"Error: {e}")
+        except Exception as e:
+            self.login = "INVALID"
+            print(f"Error: {e}")

@@ -33,9 +33,12 @@ class King(Baratheon, Lannister):
         Raises:
             TypeError: If color is not a string.
         """
-        if not isinstance(color, str):
-            raise TypeError("color must be a string")
-        self.eyes = color
+        try:
+            if not isinstance(color, str):
+                raise TypeError("color must be a string")
+            self.eyes = color
+        except TypeError as e:
+            print(f"Error setting eyes: {e}")
 
     def set_hairs(self, color: str) -> None:
         """ Set the hair color of the King character
@@ -45,9 +48,12 @@ class King(Baratheon, Lannister):
         Raises:
             TypeError: If color is not a string.
         """
-        if not isinstance(color, str):
-            raise TypeError("color must be a string")
-        self.hairs = color
+        try:
+            if not isinstance(color, str):
+                raise TypeError("color must be a string")
+            self.hairs = color
+        except TypeError as e:
+            print(f"Error setting hairs: {e}")
 
     def get_eyes(self) -> str:
         """ Get the eye color of the King character
@@ -92,9 +98,12 @@ class King(Baratheon, Lannister):
         Raises:
             TypeError: If color is not a string.
         """
-        if not isinstance(color, str):
-            raise TypeError("color must be a string")
-        self._eyes = color
+        try:
+            if not isinstance(color, str):
+                raise TypeError("color must be a string")
+            self._eyes = color
+        except TypeError as e:
+            print(f"Error setting eyes: {e}")
 
     @hairs.setter
     def hairs(self, color: str) -> None:
@@ -105,6 +114,9 @@ class King(Baratheon, Lannister):
         Raises:
             TypeError: If color is not a string.
         """
-        if not isinstance(color, str):
-            raise TypeError("color must be a string")
-        self._hairs = color
+        try:
+            if not isinstance(color, str):
+                raise TypeError("color must be a string")
+            self._hairs = color
+        except TypeError as e:
+            print(f"Error setting hairs: {e}")

@@ -15,9 +15,6 @@ class Character(ABC):
             first_name (str): The first name of the character.
             is_alive (bool, optional): Indicates if
                 the character is alive. Defaults to True.
-        Raises:
-            TypeError: If first_name is not a string
-                or is_alive is not a boolean.
         """
         if not isinstance(first_name, str):
             raise TypeError("first_name must be a string")
@@ -46,15 +43,8 @@ class Stark(Character):
             first_name (str): The first name of the Stark character.
             is_alive (bool, optional): Indicates if
                 the character is alive. Defaults to True.
-        Raises:
-            TypeError: If first_name is not a string
-                or is_alive is not a boolean.
         """
-        try:
-            super().__init__(first_name, is_alive)
-        except TypeError as e:
-            print(f"Error initializing Stark: {e}")
-            raise
+        super().__init__(first_name, is_alive)
 
     def die(self):
         """ Set the Stark character's is_alive status to False """

@@ -180,53 +180,60 @@ def ft_statistics(*args, **kwargs) -> None:
         **kwargs: Keyword arguments specifying statistical
             operations to perform.
     """
-    if not args:
-        print_errors(kwargs)
-        return
-
-    validate_data = []
-    for arg in args:
-        if isinstance(arg, (int, float)):
-            validate_data.append(arg)
-        else:
+    try:
+        if not args:
             print_errors(kwargs)
             return
 
-    data = validate_data
-    data_sorted = sorted(data)
-    data_length = len(data)
-
-    name_to_func = {
-        'mean': mean,
-        'median': median,
-        'quartile': quartile,
-        'std': standard_deviation,
-        'var': variance
-    }
-
-    for key, operation in kwargs.items():
-        if operation in name_to_func:
-            if operation in ('std', 'var'):
-                try:
-                    name_to_func[operation](
-                        data_sorted,
-                        data_length,
-                        mean(data_sorted, data_length, False)
-                    )
-                except TypeError as e:
-                    print(f"Type ERROR: {e}")
-                except ValueError as e:
-                    print(f"Value ERROR: {e}")
-                except Exception as e:
-                    print(f"ERROR: {e}")
+        validate_data = []
+        for arg in args:
+            if isinstance(arg, (int, float)):
+                validate_data.append(arg)
             else:
-                try:
-                    name_to_func[operation](data_sorted, data_length)
-                except TypeError as e:
-                    print(f"Type ERROR: {e}")
-                except ValueError as e:
-                    print(f"Value ERROR: {e}")
-                except Exception as e:
-                    print(f"ERROR: {e}")
-        else:
-            pass
+                print_errors(kwargs)
+                return
+
+        data = validate_data
+        data_sorted = sorted(data)
+        data_length = len(data)
+
+        name_to_func = {
+            'mean': mean,
+            'median': median,
+            'quartile': quartile,
+            'std': standard_deviation,
+            'var': variance
+        }
+
+        for key, operation in kwargs.items():
+            if operation in name_to_func:
+                if operation in ('std', 'var'):
+                    try:
+                        name_to_func[operation](
+                            data_sorted,
+                            data_length,
+                            mean(data_sorted, data_length, False)
+                        )
+                    except TypeError as e:
+                        print(f"Type ERROR: {e}")
+                    except ValueError as e:
+                        print(f"Value ERROR: {e}")
+                    except Exception as e:
+                        print(f"ERROR: {e}")
+                else:
+                    try:
+                        name_to_func[operation](data_sorted, data_length)
+                    except TypeError as e:
+                        print(f"Type ERROR: {e}")
+                    except ValueError as e:
+                        print(f"Value ERROR: {e}")
+                    except Exception as e:
+                        print(f"ERROR: {e}")
+            else:
+                pass
+    except TypeError as e:
+        print(f"Type ERROR: {e}")
+    except ValueError as e:
+        print(f"Value ERROR: {e}")
+    except Exception as e:
+        print(f"ERROR: {e}")

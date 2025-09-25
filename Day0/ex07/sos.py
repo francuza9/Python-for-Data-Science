@@ -51,9 +51,10 @@ def main() -> None:
                 raise AssertionError("the arguments are bad")
         text = argv[1].upper()
         print(" ".join(NESTED_MORSE[c] for c in text))
-    except Exception as e:
+    except AssertionError as e:
         print("AssertionError:", e)
-        return (1)
+    except Exception as e:
+        print("Error:", e)
     return (0)
 
 

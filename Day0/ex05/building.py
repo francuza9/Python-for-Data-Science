@@ -42,8 +42,11 @@ def main() -> int:
             text = argv[1]
         counts = count_characters(text)
         print_counts(counts)
-    except Exception as e:
+    except AssertionError as e:
         print("AssertionError:", e)
+        return 1
+    except Exception as e:
+        print("Error:", e)
         return 1
     return 0
 

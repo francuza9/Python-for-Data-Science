@@ -10,11 +10,7 @@ class calculator:
         Args:
             V1 (list of float): The first vector.
             V2 (list of float): The second vector.
-        Raises:
-            ValueError: If the vectors are not of the same length.
         """
-        if len(V1) != len(V2):
-            raise ValueError("Vectors must be of the same length")
         result = sum(x * y for x, y in zip(V1, V2))
         print(f"Dot product is: {result}")
 
@@ -25,11 +21,7 @@ class calculator:
         Args:
             V1 (list of float): The first vector.
             V2 (list of float): The second vector.
-        Raises:
-            ValueError: If the vectors are not of the same length.
         """
-        if len(V1) != len(V2):
-            raise ValueError("Vectors must be of the same length")
         result = [x + y for x, y in zip(V1, V2)]
         print(f"Add Vector is : {result}")
 
@@ -40,10 +32,6 @@ class calculator:
         Args:
             V1 (list of float): The first vector.
             V2 (list of float): The second vector.
-        Raises:
-            ValueError: If the vectors are not of the same length.
         """
-        if len(V1) != len(V2):
-            raise ValueError("Vectors must be of the same length")
         result = [x - y for x, y in zip(V1, V2)]
         print(f"Sous Vector is: {result}")
